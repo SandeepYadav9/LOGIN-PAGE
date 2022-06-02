@@ -1,29 +1,46 @@
-.main {
-  width: 100%;
-}
-.container {
+main {
+  border: 1px solid gray;
+  margin: 20px auto;
+  width: 50%;
+  border-radius: 5px;
   display: flex;
-  padding: 20px;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+h4 {
+  text-align: center;
+  font-weight: 900;
+  color: gray;
+  font-style: normal;
 }
 form {
+  margin: 5px;
+}
+input {
+  padding: 10px;
   border: 1px solid gray;
-  margin: 20px;
-  padding: 20px;
-  width: 30%;
   border-radius: 5px;
+  margin: 3px;
+  width: 100%;
 }
-.image {
-  height: 200px;
-  width: 200px;
+input:focus{
+  background-color: lightgray;
+}
+ 
+input, p{
+  color: red;
+}
+.buttons{
+padding: 20px;
+}
+button{
+  padding: 10px;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 5px;
   background-color: gray;
-  position: relative;
-}
-.image,
-p {
-  position: absolute;
-}
-
-.imageContent {
-  overflow: hidden;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
 }
