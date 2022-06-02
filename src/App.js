@@ -1,71 +1,75 @@
-import { useState } from "react";
-import "./App.css";
+import "./Login.css";
+import React, { useEffect, useState } from "react";
 
-function App() {
+const App = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const emailIsVlid = email.trim() !== "";
-  const invalidEmail = !emailIsVlid && error;
+  const [data, setData] = useState([]);
+  const [onTouch, setOnTouch] = useState(false);
 
-  const isValidPassword = email.trim() !== "";
-  const invalidPassword = !isValidPassword && error;
+  const validName = name.trim() !== "";
+  const inValidName = !validName && onTouch;
+
+  const validEmail = email.trim() !== "";
+  const inValidEmail = !validEmail && onTouch;
+
+  const validPassword = password.trim() !== "";
+  const inValidPassword = !validPassword && onTouch;
 
   const submitHandler = (e) => {
     e.priventDefault();
-    setError(true);
-    if (!emailIsVlid && !invalidPassword) {
+    setOnTouch(true)
+    if (!validEmail && !validName && !validPassword) {
       return;
     }
+    setName("");
     setEmail("");
     setPassword("");
-    setError(false);
+    setOnTouch(false)
   };
   return (
-    <div  className="main">
-      <div className="container">
-      <form>
-        <h3>LoginPage</h3>
-
+    <main>
+      <h4>Login</h4>
+      <form action="">
+        <input
+          type="text"
+          value={name}
+          placeholder="Name"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          onBlur={()=>setOnTouch(true)}
+        />
+        {inValidName && <p>Name is invalid !</p>}
+        <br />
         <input
           type="email"
+          value={email}
+          placeholder="Email"
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          onBlur={() => {
-            setError(true);
-          }}
-          value={email}
-          placeholder="Email"
+          onBlur={()=>setOnTouch(true)}
         />
-
+        {inValidEmail && <p>Email is invalid !</p>}
         <br />
-
         <input
           type="password"
+          value={password}
+          placeholder="Password"
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          onBlur={() => {
-            setError(true);
-          }}
-          value={password}
-          placeholder="Password"
+          onBlur={()=>setOnTouch(true)}
         />
-        {/* {invalidPassword && <p>Somthing Went Worng</p>} */}
-        {invalidEmail && <p>Somthing Went Worng</p>}
-        <div>
-          <button onSubmit={submitHandler}>Login</button>
+        {inValidPassword && <p>Password is invalid !</p>}
+        <div className="buttons">
+          <button onSubmit={submitHandler}>Submit</button>
         </div>
       </form>
-
-      <div className="imageContent">
-        <img src="" alt="" className="image" />
-        <p>Lorem ipsum dolor sit, amet</p>
-      </div>
-      </div>
-    </div>
+    </main>
   );
-}
+};
 
 export default App;
