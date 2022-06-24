@@ -39,7 +39,7 @@ button{
   width: 100%;
   border: 1px solid gray;
   border-radius: 5px;
-  background-color: gray;
+  background-color: rgb(62, 62, 238);
   color: white;
   font-size: medium;
   cursor: pointer;

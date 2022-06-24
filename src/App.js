@@ -1,11 +1,10 @@
-import "./Login.css";
-import React, { useEffect, useState } from "react";
+import "./App.css";
+import React, {  useState } from "react";
 
 const App = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [data, setData] = useState([]);
+  const [password, setPassword] = useState("");  
   const [onTouch, setOnTouch] = useState(false);
 
   const validName = name.trim() !== "";
@@ -23,6 +22,7 @@ const App = () => {
     if (!validEmail && !validName && !validPassword) {
       return;
     }
+    
     setName("");
     setEmail("");
     setPassword("");
